@@ -1,0 +1,1 @@
+console.log(require("fs").readFileSync("/dev/stdin","utf8").split(" ").map(a=>parseInt(a)).reduce((a,b)=>a+b)*5);
