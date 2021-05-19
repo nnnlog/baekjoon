@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+
+#define all(v) v.begin(), v.end()
+
+using namespace std;
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double ld;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef pair<ld, ld> pld;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<ld> vld;
+typedef vector<pii> vpii;
+typedef vector<pll> vpll;
+typedef vector<pld> vpld;
+typedef unordered_map<int, int> mpii;
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
+
+	int n;
+	cin >> n;
+	vector<mpii> vec(5);
+	vi ans;
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < n; j++) {
+			int a; cin >> a;
+			if (!i) ans.push_back(a);
+			vec[i][a] = j;
+		}
+	sort(all(ans), [&](int a, int b) {
+		int c = 0;
+		for (int i = 0; i < 5; i++)
+			if (vec[i][a] < vec[i][b]) ++c;
+		return c >= 3;
+	});
+	for (int i : ans) cout << i << "\n";
+}
